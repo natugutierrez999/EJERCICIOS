@@ -1,0 +1,40 @@
+import random
+
+Inicio = 1
+
+while (Inicio == 1):
+    TempObjetivo = int ( input("TEMPERATURA OBJETIVO: "))
+
+    acumulado = 0
+
+    LECTURAS = []
+
+    if TempObjetivo == 0:
+        print ("FIN DEL CICLO")
+        break
+    else:
+        if (300 <= TempObjetivo <= 320):
+            print ("TEMPERATURA CORRECTA")
+            CantLecturas = int ( input("CANTIDAD DE LECTURAS: "))
+            for i in range (CantLecturas):
+                LECTURAS.append(random.randint (299, 321))    
+
+            print ("LECTURAS SENSOR:", LECTURAS)
+
+            for item in LECTURAS:
+                acumulado = acumulado + item
+
+            promedio = acumulado / CantLecturas
+
+            print ("PROMEDIO LECTURAS:", promedio)
+
+            if (TempObjetivo - promedio <= -100):
+                print ("ENCENDER 2 QUEMADORES")
+
+            if (-100 < TempObjetivo - promedio < 0):
+                print ("ENCENDER 1 QUEMADOR")
+
+            if (TempObjetivo - promedio >= 0):
+                print ("AMBOS QUEMADORES DEBEN ESTAR APAGADOS")
+        else:
+            print ("TEMPERATURA INCORRECTA - DEBE SER ENTRE 300 Y 320")
